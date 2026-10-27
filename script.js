@@ -8,17 +8,24 @@ const cover = document.getElementById("cover");
 const personName = document.getElementById("personName");
 
 const params = new URLSearchParams(window.location.search);
-const audioId = params.get("id");
+const audioId = params.get("id")?.trim().toLowerCase();
 
+// Add each person's name and exact filenames here.
 const people = {
   carl: {
     name: "Carl",
     audio: "carl.mp3",
     cover: "carl.jpg"
+  },
+  jane: {
+    name: "Jane",
+    audio: "jane.mp3",
+    cover: "jane.jpg"
   }
+
 };
 
-const person = people[audioId?.toLowerCase()];
+const person = people[audioId];
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -32,6 +39,7 @@ function formatTime(seconds) {
 if (!person) {
   status.textContent = "Invalid audio link.";
   playButton.disabled = true;
+  progress.disabled = true;
 } else {
   personName.textContent = person.name;
   document.title = `${person.name} - Audio Message`;
@@ -40,10 +48,13 @@ if (!person) {
   cover.src = `covers/${person.cover}`;
   cover.alt = `${person.name}'s audio cover`;
 
+  // Display the actual duration of the selected audio file.
   audio.addEventListener("loadedmetadata", () => {
     duration.textContent = formatTime(audio.duration);
+    status.textContent = "Tap play to listen";
   });
 
+  // Update the elapsed time and progress bar during playback.
   audio.addEventListener("timeupdate", () => {
     currentTime.textContent = formatTime(audio.currentTime);
 
@@ -52,18 +63,26 @@ if (!person) {
     }
   });
 
+  // Allow the listener to seek through the audio.
   progress.addEventListener("input", () => {
     if (Number.isFinite(audio.duration) && audio.duration > 0) {
-      audio.currentTime = (Number(progress.value) / 100) * audio.duration;
+      audio.currentTime =
+        (Number(progress.value) / 100) * audio.duration;
     }
   });
 
+  // Play or pause the audio.
   playButton.addEventListener("click", async () => {
     if (audio.paused) {
       try {
+        if (audio.ended) {
+          audio.currentTime = 0;
+        }
+
         await audio.play();
-      } catch {
-        status.textContent = "Unable to play audio. Please try again.";
+      } catch (error) {
+        status.textContent =
+          "Unable to play audio. Please check the audio file.";
       }
     } else {
       audio.pause();
@@ -89,11 +108,13 @@ if (!person) {
     playButton.textContent = "▶";
     playButton.setAttribute("aria-label", "Play audio");
     progress.value = 0;
+    currentTime.textContent = "0:00";
     status.textContent = "Audio finished.";
   });
 
   audio.addEventListener("error", () => {
-    status.textContent = "Audio could not be loaded. Check the audio file.";
+    status.textContent =
+      "Audio could not be loaded. Check the filename and audio folder.";
   });
 
   cover.addEventListener("error", () => {
