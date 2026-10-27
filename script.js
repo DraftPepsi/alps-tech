@@ -72,20 +72,24 @@ if (!person) {
   });
 
   // Play or pause the audio.
-  playButton.addEventListener("click", async () => {
-    if (audio.paused) {
-      try {
+    playButton.addEventListener("click", async () => {
+    status.textContent = "Loading audio...";
+
+    try {
+        if (!audio.src) {
+        throw new Error("Audio source is missing.");
+        }
+
         if (audio.ended) {
-          audio.currentTime = 0;
+        audio.currentTime = 0;
         }
 
         await audio.play();
-      } catch (error) {
+    } catch (error) {
+        console.error("Audio playback error:", error);
+
         status.textContent =
-          "Unable to play audio. Please check the audio file.";
-      }
-    } else {
-      audio.pause();
+        `Playback failed: ${error.name}. Check the audio file and format.`;
     }
   });
 
