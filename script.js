@@ -13,7 +13,7 @@ const audioId = params.get("id");
 const people = {
   carl: {
     name: "Carl",
-    audio: "Carl.mp3",
+    audio: "carl.mp3",
     cover: "carl.jpg"
   }
 };
