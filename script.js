@@ -10,7 +10,6 @@ const personName = document.getElementById("personName");
 const params = new URLSearchParams(window.location.search);
 const audioId = (params.get("id") || "carl").trim().toLowerCase();
 
-// Use lowercase filenames in the repository.
 const people = {
   carl: {
     name: "Carl",
@@ -29,10 +28,10 @@ const person = people[audioId];
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
 
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = Math.floor(seconds % 60);
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
 
-  return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+  return `${mins}:${String(secs).padStart(2, "0")}`;
 }
 
 function showError(message) {
@@ -43,7 +42,7 @@ function showError(message) {
 
 if (!person) {
   personName.textContent = "Audio unavailable";
-  showError("Invalid link. Please check the URL.");
+  showError("Invalid audio link.");
 } else {
   personName.textContent = person.name;
   document.title = `${person.name} - Audio Message`;
@@ -52,15 +51,18 @@ if (!person) {
   cover.src = `covers/${person.cover}`;
   cover.alt = `${person.name}'s audio cover`;
 
-  // Wait until the browser reads the audio metadata.
   audio.addEventListener("loadedmetadata", () => {
     duration.textContent = formatTime(audio.duration);
+    status.textContent = "Tap play to listen";
     playButton.disabled = false;
     progress.disabled = false;
-    status.textContent = "Tap play to listen";
   });
 
-  // Update the playback timeline automatically.
+  audio.addEventListener("canplay", () => {
+    status.textContent = "Tap play to listen";
+    playButton.disabled = false;
+  });
+
   audio.addEventListener("timeupdate", () => {
     currentTime.textContent = formatTime(audio.currentTime);
 
@@ -69,7 +71,6 @@ if (!person) {
     }
   });
 
-  // Allow seeking to another part of the audio.
   progress.addEventListener("input", () => {
     if (Number.isFinite(audio.duration) && audio.duration > 0) {
       audio.currentTime =
@@ -77,22 +78,21 @@ if (!person) {
     }
   });
 
-  // Toggle play and pause.
   playButton.addEventListener("click", async () => {
-    if (audio.paused) {
-      try {
-        if (audio.ended) {
-          audio.currentTime = 0;
-        }
-
-        await audio.play();
-      } catch (error) {
-        console.error("Playback error:", error);
-        status.textContent =
-          `Playback failed (${error.name}). Check the audio file.`;
+    try {
+      if (audio.ended) {
+        audio.currentTime = 0;
       }
-    } else {
-      audio.pause();
+
+      if (audio.paused) {
+        status.textContent = "Starting audio...";
+        await audio.play();
+      } else {
+        audio.pause();
+      }
+    } catch (error) {
+      console.error("Playback error:", error);
+      status.textContent = `Playback failed: ${error.message}`;
     }
   });
 
@@ -120,15 +120,20 @@ if (!person) {
   });
 
   audio.addEventListener("error", () => {
+    const errorCode = audio.error?.code;
     console.error("Audio loading error:", audio.error);
 
-    showError(
-      "Audio could not load. Check the filename and audio folder."
-    );
-  });
+    const messages = {
+      1: "Audio loading was cancelled.",
+      2: "Network error while loading audio.",
+      3: "The audio file could not be decoded.",
+      4: "Audio format or file URL is not supported."
+    };
 
-  cover.addEventListener("error", () => {
-    cover.alt = "Cover image unavailable";
+    showError(
+      messages[errorCode] ||
+      "Audio could not load. Check the filename and file path."
+    );
   });
 
   audio.load();
