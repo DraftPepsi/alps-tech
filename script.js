@@ -18,9 +18,9 @@ const people = {
     cover: "carl.jpg"
   },
   jane: {
-    name: "Jane",
-    audio: "jane.mp3",
-    cover: "jane.jpg"
+    name: "Kriss",
+    audio: "kriss.mp3",
+    cover: "kriss.jpg"
   }
 };
 
