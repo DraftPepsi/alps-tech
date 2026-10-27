@@ -7,7 +7,7 @@ const audioId = params.get("id");
 
 // Add each person's first name and matching audio filename here.
 const audioFiles = {
-  carl: "Carl.mp3"
+  carl: "carl.mp3"
 };
 
 const selectedAudio = audioFiles[audioId?.toLowerCase()];
