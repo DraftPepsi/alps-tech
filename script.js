@@ -8,9 +8,9 @@ const cover = document.getElementById("cover");
 const personName = document.getElementById("personName");
 
 const params = new URLSearchParams(window.location.search);
-const audioId = params.get("id")?.trim().toLowerCase();
+const audioId = (params.get("id") || "carl").trim().toLowerCase();
 
-// Add each person's name and exact filenames here.
+// Use lowercase filenames in the repository.
 const people = {
   carl: {
     name: "Carl",
@@ -22,7 +22,6 @@ const people = {
     audio: "jane.mp3",
     cover: "jane.jpg"
   }
-
 };
 
 const person = people[audioId];
@@ -30,16 +29,21 @@ const person = people[audioId];
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
 
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
 
-  return `${mins}:${String(secs).padStart(2, "0")}`;
+  return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+}
+
+function showError(message) {
+  status.textContent = message;
+  playButton.disabled = true;
+  progress.disabled = true;
 }
 
 if (!person) {
-  status.textContent = "Invalid audio link.";
-  playButton.disabled = true;
-  progress.disabled = true;
+  personName.textContent = "Audio unavailable";
+  showError("Invalid link. Please check the URL.");
 } else {
   personName.textContent = person.name;
   document.title = `${person.name} - Audio Message`;
@@ -48,13 +52,15 @@ if (!person) {
   cover.src = `covers/${person.cover}`;
   cover.alt = `${person.name}'s audio cover`;
 
-  // Display the actual duration of the selected audio file.
+  // Wait until the browser reads the audio metadata.
   audio.addEventListener("loadedmetadata", () => {
     duration.textContent = formatTime(audio.duration);
+    playButton.disabled = false;
+    progress.disabled = false;
     status.textContent = "Tap play to listen";
   });
 
-  // Update the elapsed time and progress bar during playback.
+  // Update the playback timeline automatically.
   audio.addEventListener("timeupdate", () => {
     currentTime.textContent = formatTime(audio.currentTime);
 
@@ -63,7 +69,7 @@ if (!person) {
     }
   });
 
-  // Allow the listener to seek through the audio.
+  // Allow seeking to another part of the audio.
   progress.addEventListener("input", () => {
     if (Number.isFinite(audio.duration) && audio.duration > 0) {
       audio.currentTime =
@@ -71,25 +77,22 @@ if (!person) {
     }
   });
 
-  // Play or pause the audio.
-    playButton.addEventListener("click", async () => {
-    status.textContent = "Loading audio...";
-
-    try {
-        if (!audio.src) {
-        throw new Error("Audio source is missing.");
-        }
-
+  // Toggle play and pause.
+  playButton.addEventListener("click", async () => {
+    if (audio.paused) {
+      try {
         if (audio.ended) {
-        audio.currentTime = 0;
+          audio.currentTime = 0;
         }
 
         await audio.play();
-    } catch (error) {
-        console.error("Audio playback error:", error);
-
+      } catch (error) {
+        console.error("Playback error:", error);
         status.textContent =
-        `Playback failed: ${error.name}. Check the audio file and format.`;
+          `Playback failed (${error.name}). Check the audio file.`;
+      }
+    } else {
+      audio.pause();
     }
   });
 
@@ -113,12 +116,15 @@ if (!person) {
     playButton.setAttribute("aria-label", "Play audio");
     progress.value = 0;
     currentTime.textContent = "0:00";
-    status.textContent = "Audio finished.";
+    status.textContent = "Audio finished";
   });
 
   audio.addEventListener("error", () => {
-    status.textContent =
-      "Audio could not be loaded. Check the filename and audio folder.";
+    console.error("Audio loading error:", audio.error);
+
+    showError(
+      "Audio could not load. Check the filename and audio folder."
+    );
   });
 
   cover.addEventListener("error", () => {
