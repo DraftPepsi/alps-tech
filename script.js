@@ -17,7 +17,7 @@ const people = {
     audio: "carl.mp3",
     cover: "carl.jpg"
   },
-  jane: {
+  kriss: {
     name: "Kriss",
     audio: "kriss.mp3",
     cover: "kriss.jpg"
