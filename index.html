@@ -1,0 +1,92 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ALPS Tech Audio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: #ffffff;
+    }
+
+    main {
+      width: 100%;
+      max-width: 420px;
+      padding: 32px 24px;
+      text-align: center;
+      background: #1f2937;
+      border-radius: 20px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+    }
+
+    #status {
+      color: #d1d5db;
+      line-height: 1.6;
+      margin: 24px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #111827;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e5e7eb;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 4px;
+    }
+
+    button[hidden] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>ALPS Tech Audio</h1>
+
+    <p id="status" role="status" aria-live="polite">
+      Preparing audio...
+    </p>
+
+    <button id="playButton" type="button" hidden>
+      ▶ Tap to Play Audio
+    </button>
+
+    <audio id="audio" preload="auto"></audio>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
