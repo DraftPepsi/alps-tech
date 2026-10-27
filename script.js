@@ -35,19 +35,30 @@ function formatTime(seconds) {
   return `${mins}:${String(secs).padStart(2, "0")}`;
 }
 
-function showError(message) {
-  status.textContent = message;
-  playButton.disabled = true;
-  progress.disabled = true;
+function setPlayButton() {
+  playButton.textContent = "▶";
+  playButton.setAttribute("aria-label", "Play audio");
+}
+
+function setStopButton() {
+  playButton.textContent = "■";
+  playButton.setAttribute("aria-label", "Stop audio");
 }
 
 function resetAudio() {
   audio.pause();
   audio.currentTime = 0;
+
   progress.value = 0;
   currentTime.textContent = "0:00";
-  playButton.textContent = "▶";
-  playButton.setAttribute("aria-label", "Play audio");
+
+  setPlayButton();
+}
+
+function showError(message) {
+  status.textContent = message;
+  playButton.disabled = true;
+  progress.disabled = true;
 }
 
 if (!person) {
@@ -64,6 +75,7 @@ if (!person) {
   audio.addEventListener("loadedmetadata", () => {
     duration.textContent = formatTime(audio.duration);
     status.textContent = "Tap play to listen";
+
     playButton.disabled = false;
     progress.disabled = false;
   });
@@ -89,16 +101,15 @@ if (!person) {
 
   playButton.addEventListener("click", async () => {
     if (!audio.paused) {
-      // Stop playback and return to the beginning.
+      // Stop playback and reset to the beginning.
       resetAudio();
       status.textContent = "Audio stopped";
       return;
     }
 
     try {
-      if (audio.ended) {
-        audio.currentTime = 0;
-      }
+      // Always start from the beginning when Play is pressed.
+      audio.currentTime = 0;
 
       status.textContent = "Starting audio...";
       await audio.play();
@@ -109,14 +120,13 @@ if (!person) {
   });
 
   audio.addEventListener("play", () => {
-    playButton.textContent = "■";
-    playButton.setAttribute("aria-label", "Stop audio");
+    setStopButton();
     status.textContent = "Playing your audio message";
   });
 
   audio.addEventListener("pause", () => {
-    playButton.textContent = "▶";
-    playButton.setAttribute("aria-label", "Play audio");
+    // Keep the button consistent if audio stops unexpectedly.
+    setPlayButton();
   });
 
   audio.addEventListener("ended", () => {

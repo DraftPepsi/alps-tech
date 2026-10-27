@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,10 +33,10 @@
     }
 
     .cover {
+      display: block;
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      display: block;
       border-radius: 16px;
       margin-bottom: 24px;
       background: #eee;
@@ -62,6 +63,7 @@
     }
 
     #progress {
+      display: block;
       width: 100%;
       accent-color: #292929;
       cursor: pointer;
@@ -70,32 +72,29 @@
     .controls {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-top: 24px;
     }
 
-    
     #playButton {
-    width: 60px;
-    height: 60px;
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-    background: #242424;
-    color: #fff;
-    font-size: 22px;
-    cursor: pointer;
+      width: 60px;
+      height: 60px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: #242424;
+      color: #fff;
+      cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1;
+      text-align: center;
     }
-
-    #playButton {
-    font-family: Arial, sans-serif;
-    }
-
 
     #playButton:hover {
       background: #444;
