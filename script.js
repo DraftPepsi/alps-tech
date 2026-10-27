@@ -1,3 +1,4 @@
+
 const audio = document.getElementById("audio");
 const status = document.getElementById("status");
 const playButton = document.getElementById("playButton");
@@ -40,6 +41,15 @@ function showError(message) {
   progress.disabled = true;
 }
 
+function resetAudio() {
+  audio.pause();
+  audio.currentTime = 0;
+  progress.value = 0;
+  currentTime.textContent = "0:00";
+  playButton.textContent = "▶";
+  playButton.setAttribute("aria-label", "Play audio");
+}
+
 if (!person) {
   personName.textContent = "Audio unavailable";
   showError("Invalid audio link.");
@@ -59,7 +69,6 @@ if (!person) {
   });
 
   audio.addEventListener("canplay", () => {
-    status.textContent = "Tap play to listen";
     playButton.disabled = false;
   });
 
@@ -79,17 +88,20 @@ if (!person) {
   });
 
   playButton.addEventListener("click", async () => {
+    if (!audio.paused) {
+      // Stop playback and return to the beginning.
+      resetAudio();
+      status.textContent = "Audio stopped";
+      return;
+    }
+
     try {
       if (audio.ended) {
         audio.currentTime = 0;
       }
 
-      if (audio.paused) {
-        status.textContent = "Starting audio...";
-        await audio.play();
-      } else {
-        audio.pause();
-      }
+      status.textContent = "Starting audio...";
+      await audio.play();
     } catch (error) {
       console.error("Playback error:", error);
       status.textContent = `Playback failed: ${error.message}`;
@@ -97,25 +109,18 @@ if (!person) {
   });
 
   audio.addEventListener("play", () => {
-    playButton.textContent = "Ⅱ";
-    playButton.setAttribute("aria-label", "Pause audio");
+    playButton.textContent = "■";
+    playButton.setAttribute("aria-label", "Stop audio");
     status.textContent = "Playing your audio message";
   });
 
   audio.addEventListener("pause", () => {
     playButton.textContent = "▶";
     playButton.setAttribute("aria-label", "Play audio");
-
-    if (!audio.ended) {
-      status.textContent = "Audio paused";
-    }
   });
 
   audio.addEventListener("ended", () => {
-    playButton.textContent = "▶";
-    playButton.setAttribute("aria-label", "Play audio");
-    progress.value = 0;
-    currentTime.textContent = "0:00";
+    resetAudio();
     status.textContent = "Audio finished";
   });
 
@@ -134,6 +139,10 @@ if (!person) {
       messages[errorCode] ||
       "Audio could not load. Check the filename and file path."
     );
+  });
+
+  cover.addEventListener("error", () => {
+    cover.alt = "Cover image unavailable";
   });
 
   audio.load();
