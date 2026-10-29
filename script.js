@@ -83,7 +83,7 @@ const people = {
   kriss: {
     name: "Kriss",
     audio: "kriss.wav",
-    cover: "kriss.png",
+    cover: "kriss.jpg",
     subtitle: "thank you for everything!"
   },
   joemar: {
