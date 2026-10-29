@@ -29,7 +29,7 @@ const people = {
   carl: {
     name: "Carl",
     audio: "carl.wav",
-    cover: "carl.png",
+    cover: "carl.jpg",
     subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
   },
   kriss: {
