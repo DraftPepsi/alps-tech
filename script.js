@@ -7,20 +7,36 @@ const currentTime = document.getElementById("currentTime");
 const duration = document.getElementById("duration");
 const cover = document.getElementById("cover");
 const personName = document.getElementById("personName");
+const subtitle = document.querySelector(".subtitle");
 
 const params = new URLSearchParams(window.location.search);
 const audioId = (params.get("id") || "carl").trim().toLowerCase();
 
+// Add each person's details here.
 const people = {
   nica: {
     name: "Nica",
     audio: "nica.wav",
-    cover: "nica.png"
+    cover: "nica.png",
+    subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
+  },
+  joeffrey: {
+    name: "Joeffrey",
+    audio: "joeffrey.wav",
+    cover: "joeffrey.png",
+    subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
+  },
+  carl: {
+    name: "Carl",
+    audio: "carl.wav",
+    cover: "carl.png",
+    subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
   },
   kriss: {
     name: "Kriss",
     audio: "kriss.wav",
-    cover: "kriss.png"
+    cover: "kriss.png",
+    subtitle: "Thank you for everything!"
   }
 };
 
@@ -61,8 +77,7 @@ function showError(message) {
   playButton.disabled = true;
   progress.disabled = true;
 
-  playButton.textContent = "▶";
-  playButton.setAttribute("aria-label", "Play audio");
+  setPlayButton();
 
   progress.value = 0;
   currentTime.textContent = "0:00";
@@ -73,9 +88,19 @@ function showError(message) {
 
 if (!person) {
   personName.textContent = "Audio unavailable";
+
+  if (subtitle) {
+    subtitle.textContent = "This audio message is unavailable.";
+  }
+
   showError("Invalid audio link.");
 } else {
   personName.textContent = person.name;
+
+  if (subtitle) {
+    subtitle.textContent = person.subtitle || "Your audio message";
+  }
+
   document.title = `${person.name} - Audio Message`;
 
   audio.src = `audio/${person.audio}`;
@@ -111,21 +136,19 @@ if (!person) {
 
   playButton.addEventListener("click", async () => {
     if (!audio.paused) {
-      // Stop playback and reset to the beginning.
       resetAudio();
       status.textContent = "Audio stopped";
       return;
     }
 
     try {
-      // Always start from the beginning when Play is pressed.
       audio.currentTime = 0;
 
       status.textContent = "Starting audio...";
       await audio.play();
     } catch (error) {
       console.error("Playback error:", error);
-      status.textContent = `Playback failed: ${error.message}`;
+      status.textContent = "Playback failed. Please try again.";
     }
   });
 
@@ -135,7 +158,6 @@ if (!person) {
   });
 
   audio.addEventListener("pause", () => {
-    // Keep the button consistent if audio stops unexpectedly.
     setPlayButton();
   });
 
@@ -146,6 +168,7 @@ if (!person) {
 
   audio.addEventListener("error", () => {
     const errorCode = audio.error?.code;
+
     console.error("Audio loading error:", audio.error);
 
     const messages = {
