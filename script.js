@@ -12,15 +12,15 @@ const params = new URLSearchParams(window.location.search);
 const audioId = (params.get("id") || "carl").trim().toLowerCase();
 
 const people = {
-  carl: {
-    name: "Carl",
-    audio: "carl.mp3",
-    cover: "carl.jpg"
+  nica: {
+    name: "Nica",
+    audio: "nica.wav",
+    cover: "nica.png"
   },
   kriss: {
     name: "Kriss",
-    audio: "kriss.mp3",
-    cover: "kriss.jpg"
+    audio: "kriss.wav",
+    cover: "kriss.png"
   }
 };
 
@@ -56,9 +56,19 @@ function resetAudio() {
 }
 
 function showError(message) {
-  status.textContent = message;
+  audio.pause();
+
   playButton.disabled = true;
   progress.disabled = true;
+
+  playButton.textContent = "▶";
+  playButton.setAttribute("aria-label", "Play audio");
+
+  progress.value = 0;
+  currentTime.textContent = "0:00";
+  duration.textContent = "0:00";
+
+  status.textContent = message;
 }
 
 if (!person) {
