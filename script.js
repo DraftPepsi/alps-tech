@@ -56,10 +56,10 @@ const people = {
     cover: "carl.jpg",
     subtitle: "your audio message"
   },
-  angelo: {
-    name: "Angelo",
-    audio: "angelo.wav",
-    cover: "angelo.jpg",
+  gelo: {
+    name: "Gelo",
+    audio: "gelo.wav",
+    cover: "gelo.jpg",
     subtitle: "your audio message"
   },
   ivy: {
