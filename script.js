@@ -14,29 +14,203 @@ const audioId = (params.get("id") || "carl").trim().toLowerCase();
 
 // Add each person's details here.
 const people = {
-  nica: {
-    name: "Nica",
-    audio: "nica.wav",
-    cover: "nica.jpg",
-    subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
-  },
   joeffrey: {
     name: "Joeffrey",
     audio: "joeffrey.wav",
     cover: "joeffrey.jpg",
-    subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
+    subtitle: "your audio message"
+  },
+  emman: {
+    name: "Emman",
+    audio: "emman.wav",
+    cover: "emman.jpg",
+    subtitle: "your audio message"
+  },
+  ericka: {
+    name: "Ericka",
+    audio: "ericka.wav",
+    cover: "ericka.jpg",
+    subtitle: "your audio message"
+  },
+  justin: {
+    name: "Justin",
+    audio: "justin.wav",
+    cover: "justin.jpg",
+    subtitle: "your audio message"
+  },
+  janine: {
+    name: "Janine",
+    audio: "janine.wav",
+    cover: "janine.jpg",
+    subtitle: "your audio message"
+  },
+  jj: {
+    name: "JJ",
+    audio: "jj.wav",
+    cover: "jj.jpg",
+    subtitle: "your audio message"
   },
   carl: {
     name: "Carl",
     audio: "carl.wav",
     cover: "carl.jpg",
-    subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
+    subtitle: "your audio message"
+  },
+  angelo: {
+    name: "Angelo",
+    audio: "angelo.wav",
+    cover: "angelo.jpg",
+    subtitle: "your audio message"
+  },
+  ivy: {
+    name: "Ivy",
+    audio: "ivy.wav",
+    cover: "ivy.jpg",
+    subtitle: "your audio message"
+  },
+  josh: {
+    name: "Josh",
+    audio: "josh.wav",
+    cover: "josh.jpg",
+    subtitle: "your audio message"
+  },
+  menchie: {
+    name: "Menchie",
+    audio: "menchie.wav",
+    cover: "menchie.jpg",
+    subtitle: "your audio message"
   },
   kriss: {
     name: "Kriss",
     audio: "kriss.wav",
     cover: "kriss.png",
-    subtitle: "Thank you for everything!"
+    subtitle: "thank you for everything!"
+  },
+  joemar: {
+    name: "Joemar",
+    audio: "joemar.wav",
+    cover: "joemar.jpg",
+    subtitle: "your audio message"
+  },
+  april: {
+    name: "April",
+    audio: "april.wav",
+    cover: "april.jpg",
+    subtitle: "your audio message"
+  },
+  ann: {
+    name: "Ann",
+    audio: "ann.wav",
+    cover: "ann.jpg",
+    subtitle: "your audio message"
+  },
+  kim: {
+    name: "Kim",
+    audio: "kim.wav",
+    cover: "kim.jpg",
+    subtitle: "your audio message"
+  },
+  shane: {
+    name: "Shane",
+    audio: "shane.wav",
+    cover: "shane.jpg",
+    subtitle: "your audio message"
+  },
+  novel: {
+    name: "Novel",
+    audio: "novel.wav",
+    cover: "novel.jpg",
+    subtitle: "your audio message"
+  },
+  nica: {
+    name: "Nica",
+    audio: "nica.wav",
+    cover: "nica.jpg",
+    subtitle: "your audio message"
+  },
+  mela: {
+    name: "Mela",
+    audio: "mela.wav",
+    cover: "mela.jpg",
+    subtitle: "your audio message"
+  },
+  james: {
+    name: "James",
+    audio: "james.wav",
+    cover: "james.jpg",
+    subtitle: "your audio message"
+  },
+  marin: {
+    name: "Marin",
+    audio: "marin.wav",
+    cover: "marin.jpg",
+    subtitle: "your audio message"
+  },
+  ken: {
+    name: "Ken",
+    audio: "ken.wav",
+    cover: "ken.jpg",
+    subtitle: "your audio message"
+  },
+  railey: {
+    name: "Railey",
+    audio: "railey.wav",
+    cover: "railey.jpg",
+    subtitle: "your audio message"
+  },
+  mj: {
+    name: "MJ",
+    audio: "mj.wav",
+    cover: "mj.jpg",
+    subtitle: "your audio message"
+  },
+  renz: {
+    name: "Renz",
+    audio: "renz.wav",
+    cover: "renz.jpg",
+    subtitle: "your audio message"
+  },
+  zedrick: {
+    name: "Zedrick",
+    audio: "zedrick.wav",
+    cover: "zedrick.jpg",
+    subtitle: "your audio message"
+  },
+  chelsea: {
+    name: "Chelsea",
+    audio: "chelsea.wav",
+    cover: "chelsea.jpg",
+    subtitle: "your audio message"
+  },
+  jona: {
+    name: "Jona",
+    audio: "jona.wav",
+    cover: "jona.jpg",
+    subtitle: "your audio message"
+  },
+  hannah: {
+    name: "Hannah",
+    audio: "hannah.wav",
+    cover: "hannah.jpg",
+    subtitle: "your audio message"
+  },
+  adnil: {
+    name: "Adnil",
+    audio: "adnil.wav",
+    cover: "adnil.jpg",
+    subtitle: "your audio message"
+  },
+  dennison: {
+    name: "Dennison",
+    audio: "dennison.wav",
+    cover: "dennison.jpg",
+    subtitle: "your audio message"
+  },
+  eric: {
+    name: "Eric",
+    audio: "eric.wav",
+    cover: "eric.jpg",
+    subtitle: "your audio message"
   }
 };
 
