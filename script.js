@@ -17,13 +17,13 @@ const people = {
   nica: {
     name: "Nica",
     audio: "nica.wav",
-    cover: "nica.png",
+    cover: "nica.jpg",
     subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
   },
   joeffrey: {
     name: "Joeffrey",
     audio: "joeffrey.wav",
-    cover: "joeffrey.png",
+    cover: "joeffrey.jpg",
     subtitle: "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
   },
   carl: {
