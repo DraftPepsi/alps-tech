@@ -1,4 +1,3 @@
-
 const audio = document.getElementById("audio");
 const status = document.getElementById("status");
 const playButton = document.getElementById("playButton");
@@ -226,12 +225,12 @@ function formatTime(seconds) {
 }
 
 function setPlayButton() {
-  playButton.textContent = "▶";
+  playButton.classList.remove("is-playing");
   playButton.setAttribute("aria-label", "Play audio");
 }
 
 function setStopButton() {
-  playButton.textContent = "■";
+  playButton.classList.add("is-playing");
   playButton.setAttribute("aria-label", "Stop audio");
 }
 
