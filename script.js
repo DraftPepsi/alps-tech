@@ -81,7 +81,7 @@ const people = {
     subtitle: "Mamimiss ko mga luto at dessert mo madam Menchie. Huhuhu. Pasensya na, lagi kitang binibigyan ng sakit sa ulo. HAHA. Pero maraming salamat sayo, kasi tinitiis mo kakulitan ko kahit minsan sobra na."
   },
   kriss: {
-    name: "The next QA Lead sheeeeesh",
+    name: "The next QA Lead sheesh",
     audio: "kriss.wav",
     cover: "kriss.jpg",
     subtitle: "Kaya mo to Kriss, sobrang bilib ako sayo! Deserve mo tong promotion haha. Maraming salamat Kriss, wala akong masabi sa work ethic mo. Sobrang sipag mo, at sana di 'to magbago kapag lead ka na. Ang masasabi ko lang talaga is sobrang swerte ng ALPS sayo. Walang kaya pumantay sa ginagawa mong trabaho as QA, at dedication mo matuto at mag deep dive sa QA Automation. Wag ka magbabago ha! Maraming salamat sayo! Love lots!"
@@ -150,7 +150,7 @@ const people = {
     name: "ULOL WALANG MOUSE",
     audio: "ken.wav",
     cover: "ken.jpg",
-    subtitle: "Sayo nalang riser ko, yung mouse bawal. HAHAHAHA. Salamat boi! Saglit lang kita nakasama pero naging masaya naman, kahit sobrang busyy niyo na dyan. HAHAHAHA. Pagpatuloy mo lang men, basta wag ka magshashabu. Pero kung gusto mo talaga mouse ko, isubo mo nalang ti-"
+    subtitle: "Sayo nalang riser ko, yung mouse bawal. HAHAHAHA. Salamat boi! Saglit lang kita nakasama pero naging masaya naman, kahit sobrang busy niyo na dyan. HAHAHAHA. Pagpatuloy mo lang men, basta wag ka magshashabu. Pero kung gusto mo talaga mouse ko, isubo mo nalang ti-"
   },
   railey: {
     name: "The Spotter",
@@ -189,7 +189,7 @@ const people = {
     subtitle: "HAHAHAHAHAHA ganun din di ko malilimutan costume niyo. Maraming Salamat at dumating kayo sa ALPS. Yun lang."
   },
   hannah: {
-    name: "This is HAAAAAAAAAAAAAANS!",
+    name: "This is HAAAAAANS!",
     audio: "hannah.wav",
     cover: "hannah.jpg",
     subtitle: "HAHAHAHA. Sorry 1 month mo lang ako naging TL, pero wag ka mag-alala andyan naman si Kriss. Salamat sayo dahil nakikinig ka sa mga tinuturo ko sayo, masipag ka magwork, magaling ka sa trabaho, at mabait. Pagpatuloy mo lang yan! Kapag dumating na yung time na makakawork ko ulit kayo, sana kayo ulit nasa team ko. Maraming salamat!"
