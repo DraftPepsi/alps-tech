@@ -36,7 +36,7 @@ const people = {
     name: "Wazap Scatter Lord",
     audio: "justin.wav",
     cover: "justin.jpg",
-    subtitle: "Ano na par, kailang ka magreresign? HAHAHA! Maraming salamat men, grabe saya niyo kakulitan dyan sa Tech Sol kaya nalulungkot ako na aalis din ako, pero sana di kayo magbago, ang saya magtrabaho kapag kumpleto kayo eh, ang saya lagi. Hahaha."
+    subtitle: "Ano na par, kailan ka magreresign? HAHAHA! Maraming salamat men, grabe saya niyo kakulitan dyan sa Tech Sol kaya nalulungkot ako na aalis din ako, pero sana di kayo magbago, ang saya magtrabaho kapag kumpleto kayo eh, ang saya lagi. Hahaha."
   },
   janine: {
     name: "Madam J",
