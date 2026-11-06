@@ -155,7 +155,7 @@ const people = {
     name: "The Spotter",
     audio: "railey.wav",
     cover: "railey.jpg",
-    subtitle: "Tanginamo tigil mo kakaspot ng babae kung saan saan. HAHAHAHA. Maraming salamat Railey! Saglit lang kita nakasama, pero ang saya mo kakwentuhan, dami mong kagaguhan sa buhay. HAHAHAHAHAHA. Pagpatuloy mo lang yung ganyang pagtratrabaho, sobrang kailangan ka dito sa ALPS. Salamat salamat salamat!"
+    subtitle: "Tigil mo kakaspot ng babae kung saan saan. HAHAHAHA. Maraming salamat Railey! Saglit lang kita nakasama, pero ang saya mo kakwentuhan, dami mong kagaguhan sa buhay. HAHAHAHAHAHA. Pagpatuloy mo lang yung ganyang pagtratrabaho, sobrang kailangan ka dito sa ALPS. Salamat salamat salamat!"
   },
   mj: {
     name: "The Braider",
@@ -209,7 +209,7 @@ const people = {
     name: "The Joker",
     audio: "eric.wav",
     cover: "eric.jpg",
-    subtitle: "Wassup Boss Eric! Maraming salamat po boss sa mga painom niyo! Hahahaha. Hindi nagiging boring after hours ng work kapag may painom po kayo. Hahaha. Wish you all and the company the best po boss Eric! Thanks po ulit!"
+    subtitle: "Wassup Boss Eric! Maraming salamat po sainyo! Hahahaha. Hindi nagiging boring after hours ng work kapag may painom po kayo. Hahaha. Wish you all and the company the best po boss Eric! Thanks po ulit!"
   }
 };
 
