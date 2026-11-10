@@ -210,7 +210,7 @@ const people = {
     audio: "eric.wav",
     cover: "eric.jpg",
     subtitle: "Wassup Boss Eric! Maraming salamat po sainyo! Hahahaha. Hindi nagiging boring after hours ng work kapag may painom po kayo. Hahaha. Wish you all and the company the best po boss Eric! Thanks po ulit!"
-  }
+  },
   cassie: {
     name: "To Cassie",
     audio: "cassie.wav",
