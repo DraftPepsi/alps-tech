@@ -188,7 +188,7 @@ const people = {
     subtitle: "HAHAHAHAHAHA ganun din di ko malilimutan costume niyo. Maraming Salamat at dumating kayo sa ALPS. Yun lang."
   },
   hannah: {
-    name: "This is HAAAAAANS!",
+    name: "This is HAAAAAANZ!",
     audio: "hannah.wav",
     cover: "hannah.jpg",
     subtitle: "HAHAHAHA. Sorry 1 month mo lang ako naging TL, pero wag ka mag-alala andyan naman si Kriss. Salamat sayo dahil nakikinig ka sa mga tinuturo ko sayo, masipag ka magwork, magaling ka sa trabaho, at mabait. Pagpatuloy mo lang yan! Kapag dumating na yung time na makakawork ko ulit kayo, sana kayo ulit nasa team ko. Maraming salamat!"
